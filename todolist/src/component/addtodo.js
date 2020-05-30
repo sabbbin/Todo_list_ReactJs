@@ -1,31 +1,39 @@
-import React, { Component,se } from 'react';
 
-class addTodo extends Component {
-    state = { 
-        const {item, setitem}=this.setState(
+import React, { Component,se } from 'react';
+import todoList from './todolist';
+function addTodo  {
+   
+        const [item, setitem]=setState({
             title='',
             detail=''
+        }
+      
         );
-        const {items, setitems}=this.setState([])
-     }
+        const [items, setitems]=setState([]);
+     
 
 
-     function add() {
+    
+     
+    function add(item) {
          
-         setitems((prestate)=>{
-             return ([...prestate],item)
-         });
-         
-     }
-
+        setitems((prestate)=>{
+            return {...prestate,item}
+        });
+        
+        
+    }  ;
+     
      function handlechange(event) {
          const name=event.target.name;
          const value=event.target.value;
-         setitem(()=>{
-             return ([...item], [name]:value)
-         });
+         setitem((preitem)=>{
+             return {
+                 ...preitem, [name]:value
+             })
+         }
          
-     }
+    
 
      function viewitem(id) {
          const itemindex=items.filter((item ,index)=>{
@@ -38,14 +46,17 @@ class addTodo extends Component {
          
      }
 
-    render() { 
+
         return ( 
             <div>
             <input type='text' value={item.title}/>
             <input type='text' value={item.detail}/>
             <button type='submit'>Add items </button>
+            <todoList  items={items} />
         </div>
          );
-    }
+ 
 }
+
+export default addTodo;
  
